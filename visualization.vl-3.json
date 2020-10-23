@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": 800,
   "height": 800,
-  "title": "Car Crashes in Victoria last 5 Years",
   "projection": {
     "type": "equirectangular"
   },
