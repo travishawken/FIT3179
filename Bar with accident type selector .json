@@ -1,0 +1,74 @@
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/travishawken/FIT3179/master/Vic_Crashes_2018.csv"
+  },
+  "params": [
+    {
+      "name": "ACCIDENT_TYPE",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Collision with a fixed object",
+          "collision with some other object",
+          "Collision with vehicle",
+          "Fall from or in moving vehicle",
+          "No collision and no object struck",
+          "Other accident",
+          "Struck animal",
+          "Struck Pedestrian",
+          "Vehicle overturned (no collision)"
+        ],
+        "labels": [
+          "Show All",
+          "Collision with a fixed object",
+          "collision with some other object",
+          "Collision with vehicle",
+          "Fall from or in moving vehicle",
+          "No collision and no object struck",
+          "Other accident",
+          "Struck animal",
+          "Struck Pedestrian",
+          "Vehicle overturned (no collision)"
+        ],
+        "name": "Accident Type Selection"
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "ACCIDENT_TYPE == null || datum.ACCIDENT_TYPE == ACCIDENT_TYPE"}
+  ],
+  "width": 600,
+  "height": 600,
+  "encoding": {
+    "y": {"aggregate": "count", "field": "ACCIDENT_DATE"},
+    "x": {"timeUnit": "month", "field": "ACCIDENT_DATE"}
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "tooltip": [
+          {"aggregate": "count", "field": "ACCIDENT_DATE", "type": "nominal"},
+          {"timeUnit": "month", "field": "ACCIDENT_DATE"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "centre",
+        "baseline": "bottom",
+        "dx": 3
+      },
+      "encoding": {
+        "text": {
+          "aggregate": "count",
+          "field": "ACCIDENT_DATE",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {}
+}
